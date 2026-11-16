@@ -6,6 +6,7 @@
 !/projects/
 !/projects/outreach/
 !/projects/starter/
+!/releases/
 !/scripts/
 !/src/
 !/tests/
@@ -16,6 +17,8 @@
 !/AGENTS.md
 !/DESIGN.md
 !/README.md
+!/RELEASING.md
+!/releases/v0.5.0.md
 !/bin/cerebro.js
 !/examples/first-collaboration.md
 !/node

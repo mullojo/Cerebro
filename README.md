@@ -7,6 +7,11 @@ This is an early playground, not a hosted service or autonomous agent platform.
 The application does not call a model or send email. A coding assistant can use
 its local CLI to read context and save work when the human asks.
 
+Current version: **0.5.0 (alpha)**. Download versioned snapshots from
+[GitHub Releases](https://github.com/mullojo/Cerebro/releases).
+See the [release notes](alpha/releases/v0.5.0.md) and
+[versioning guide](alpha/RELEASING.md).
+
 ## Try it
 
 Install Node.js 22 or newer. From this repository:
