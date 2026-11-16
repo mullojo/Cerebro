@@ -1,7 +1,9 @@
-# Cerebro v0.5.0 — first public alpha
+# Changelog
+
+## 0.5.0 — 2026-11-15
 
 A local playground for shared knowledge and collaboration between people and
-their AI assistants. This release establishes the public, MIT-licensed baseline.
+their AI assistants. This version establishes the public, MIT-licensed baseline.
 
 ## Included
 
@@ -14,7 +16,7 @@ their AI assistants. This release establishes the public, MIT-licensed baseline.
 
 ## Try it
 
-Install Node.js 22 or newer, extract the source archive, and run:
+Install Node.js 22 or newer, download or clone the repository, and run:
 
 ```sh
 cd alpha

@@ -7,10 +7,9 @@ This is an early playground, not a hosted service or autonomous agent platform.
 The application does not call a model or send email. A coding assistant can use
 its local CLI to read context and save work when the human asks.
 
-Current version: **0.5.0 (alpha)**. Download versioned snapshots from
-[GitHub Releases](https://github.com/mullojo/Cerebro/releases).
-See the [release notes](alpha/releases/v0.5.0.md) and
-[versioning guide](alpha/RELEASING.md).
+Current version: **0.5.0 (alpha)**.
+See the [changelog](alpha/CHANGELOG.md) and
+[versioning guide](alpha/VERSIONING.md).
 
 ## Try it
 

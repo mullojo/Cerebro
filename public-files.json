@@ -2,7 +2,6 @@
   "files": [
     ".gitattributes",
     ".github/workflows/check.yml",
-    ".github/workflows/release.yml",
     ".gitignore",
     "LICENSE",
     "PUBLICATION.md",
@@ -11,8 +10,8 @@
     "alpha/AGENTS.md",
     "alpha/DESIGN.md",
     "alpha/README.md",
-    "alpha/RELEASING.md",
-    "alpha/releases/v0.5.0.md",
+    "alpha/VERSIONING.md",
+    "alpha/CHANGELOG.md",
     "alpha/bin/cerebro.js",
     "alpha/examples/first-collaboration.md",
     "alpha/node",
