@@ -1,0 +1,10 @@
+import { startServer } from '../server.js';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+const root = await fs.mkdtemp(path.join(os.tmpdir(), 'cerebro-outreach-preview-'));
+await fs.mkdir(path.join(root,'projects'),{recursive:true});
+await fs.cp('projects/outreach', path.join(root,'projects/outreach'),{recursive:true});
+const app = await startServer({root,port:4312});
+console.log(`Outreach preview: ${app.url}/projects/outreach/`);
+for(const signal of ['SIGINT','SIGTERM']) process.once(signal,async()=>{ await app.close();await fs.rm(root,{recursive:true}); });

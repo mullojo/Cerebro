@@ -1,0 +1,6 @@
+{
+  "people": [
+    { "id": "alex", "name": "Alex", "theme": "forest", "aliases": [] },
+    { "id": "sam", "name": "Sam", "theme": "magenta", "aliases": [] }
+  ]
+}

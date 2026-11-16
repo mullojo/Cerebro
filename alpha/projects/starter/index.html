@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>A small beginning</title>
+  <style type="text/tailwindcss">@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --color-forest-50: #f1f6f0;
+  --color-forest-100: #e2ecdc;
+  --color-forest-200: #cbdcc1;
+  --color-forest-300: #acc49f;
+  --color-forest-400: #88a77b;
+  --color-forest-500: #638659;
+  --color-forest-600: #4b6d43;
+  --color-forest-700: #355637;
+  --color-forest-800: #254a3e;
+  --color-forest-900: #193e35;
+  --color-forest-950: #123029;
+  --color-canvas: #f7f7f2;
+  --color-paper: #fffefa;
+  --color-ink: #233c33;
+  --color-muted: #637264;
+  --color-line: #dce2d5;
+  --color-moss: #dce8bd;
+  --color-clay: #a15e3f;
+  --color-backdrop: #112e28f5;
+  --shadow-panel: 0 2px 8px -5px #18382b1a, 0 12px 28px -20px #18382b1a;
+}
+
+@layer base {
+  /* Existing Tailwind utilities consume these tokens across every component. */
+  :root[data-theme="magenta"] {
+    --color-forest-50: #fcf4f9;
+    --color-forest-100: #f5e4ef;
+    --color-forest-200: #edd0e5;
+    --color-forest-300: #dfadd2;
+    --color-forest-400: #ce81b9;
+    --color-forest-500: #be5ca5;
+    --color-forest-600: #a83b8e;
+    --color-forest-700: #8c2d73;
+    --color-forest-800: #6c245a;
+    --color-forest-900: #4b1c41;
+    --color-forest-950: #32162e;
+    --color-canvas: #faf5f8;
+    --color-paper: #fffafd;
+    --color-ink: #3d2637;
+    --color-muted: #786573;
+    --color-line: #eadbe4;
+    --color-moss: #f1cbe4;
+    --color-clay: #a45971;
+    --color-backdrop: #32162ef5;
+    --shadow-panel: 0 2px 8px -5px #4b1c411a, 0 12px 28px -20px #4b1c411a;
+    --select-chevron-default: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23786573' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 7.5 5 5 5-5'/%3E%3C/svg%3E");
+    --select-chevron-inverse: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23edd0e5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 7.5 5 5 5-5'/%3E%3C/svg%3E");
+  }
+  html { color-scheme: light; scrollbar-gutter: stable; }
+  body { @apply m-0 bg-canvas font-sans text-ink antialiased; }
+  button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+  button:not(:disabled), select { cursor: pointer; }
+  button:disabled { cursor: wait; }
+  :focus-visible { @apply outline-2 outline-offset-4 outline-forest-600; }
+  ::selection { @apply bg-moss text-forest-950; }
+  html:has(dialog:modal), body:has(dialog:modal) { overflow: hidden; overscroll-behavior: none; }
+  dialog { overscroll-behavior: contain; }
+  dialog::backdrop { background: var(--color-backdrop); }
+  dialog[open] { animation: none; transition: none; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
+}
+
+@layer components {
+  .btn-primary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-forest-800 px-4 py-2.5 text-sm font-medium text-white shadow-xs transition-colors hover:bg-forest-900 disabled:opacity-50; }
+  .btn-secondary { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-line bg-paper px-4 py-2.5 text-sm font-medium text-forest-800 transition-colors hover:border-forest-300 hover:bg-forest-50 disabled:opacity-50; }
+  .btn-quiet { @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-forest-800 transition-colors hover:bg-forest-50 disabled:opacity-50; }
+  .icon-button { @apply inline-flex size-11 shrink-0 items-center justify-center rounded-lg text-muted transition-colors hover:bg-forest-50 hover:text-forest-900 disabled:opacity-50; }
+  .field { @apply min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2.5 text-sm leading-6 text-ink outline-none placeholder:text-muted/80 focus:border-forest-500 focus:ring-3 focus:ring-forest-100 disabled:bg-forest-50 disabled:opacity-70; }
+  .view-toggle { @apply min-h-11 rounded-lg px-3 text-xs font-medium text-muted hover:bg-forest-50 aria-pressed:bg-forest-100 aria-pressed:text-forest-950 disabled:cursor-default disabled:opacity-40; }
+  .field-label { @apply mb-2 block text-sm font-medium text-ink; }
+  .eyebrow { @apply text-[10px] font-semibold uppercase tracking-[0.18em] text-muted; }
+  .panel { @apply rounded-2xl border border-line bg-paper shadow-panel; }
+  .dialog-panel { @apply fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-xl overflow-y-auto rounded-2xl border border-line bg-paper p-5 text-ink shadow-2xl sm:p-7; }
+  .skeleton { @apply animate-pulse rounded-lg bg-forest-100/70; }
+  .markdown-content { @apply text-sm leading-7 text-ink break-words; }
+  .markdown-content > :first-child { margin-top: 0; }
+  .markdown-content > :last-child { margin-bottom: 0; }
+  .markdown-content p { @apply my-3; }
+  .markdown-content h1 { @apply mt-7 mb-4 font-display text-3xl leading-10 tracking-tight; }
+  .markdown-content h2 { @apply mt-7 mb-3 border-b border-line pb-2 text-xl font-semibold leading-8 tracking-tight; }
+  .markdown-content h3 { @apply mt-5 mb-2 text-base font-semibold leading-7; }
+  .markdown-content h4, .markdown-content h5, .markdown-content h6 { @apply mt-4 mb-2 text-sm font-semibold; }
+  .markdown-content ul { @apply my-3 list-disc space-y-1 pl-6; }
+  .markdown-content ol { @apply my-3 list-decimal space-y-1 pl-6; }
+  .markdown-content li > ul, .markdown-content li > ol { @apply my-1; }
+  .markdown-content a { @apply font-medium text-forest-700 underline decoration-forest-300 underline-offset-4 hover:text-forest-950; }
+  .markdown-content blockquote { @apply my-4 border-l-3 border-forest-300 bg-forest-50 py-1 pr-4 pl-4 text-muted; }
+  .markdown-content pre { @apply my-4 max-w-full overflow-x-auto rounded-xl border border-line bg-forest-50 p-4 font-mono text-xs leading-6; }
+  .markdown-content :not(pre) > code { @apply rounded bg-forest-100/70 px-1.5 py-0.5 font-mono text-[0.85em] text-forest-900; }
+  .markdown-content table { @apply my-5 block w-full max-w-full overflow-x-auto border-collapse text-left text-xs; }
+  .markdown-content th { @apply border border-line bg-forest-50 px-3 py-2 font-semibold; }
+  .markdown-content td { @apply border border-line px-3 py-2 align-top; }
+  .markdown-content hr { @apply my-6 border-line; }
+  .markdown-content input[type=checkbox] { @apply mr-2 size-3.5 accent-forest-700; }
+}
+
+/* Reserve room for a consistent chevron on every single-choice dropdown.
+   Utilities layer keeps field/compact padding utilities from crowding the arrow. */
+@layer utilities {
+  select:not([multiple]) {
+    appearance: none;
+    padding-inline-end: 2.5rem;
+    background-image: var(--select-chevron, var(--select-chevron-default, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23637264' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 7.5 5 5 5-5'/%3E%3C/svg%3E")));
+    background-position: right .75rem center;
+    background-size: 1.25rem 1.25rem;
+    background-repeat: no-repeat;
+  }
+  .select-inverse {
+    --select-chevron: var(--select-chevron-inverse, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23cbdcc1' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 7.5 5 5 5-5'/%3E%3C/svg%3E"));
+  }
+  @media (forced-colors: active) {
+    select:not([multiple]) { appearance: auto; background-image: none; }
+  }
+}
+</style>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4.3.5" defer></script>
+  <script type="module" src="./app.js"></script>
+</head>
+<body><div id="project-app"><p style="padding:2rem;font:16px system-ui">Opening your playground… Check your connection if this stays here.</p></div><noscript>This playground needs JavaScript enabled.</noscript></body>
+</html>

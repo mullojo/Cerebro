@@ -1,0 +1,6 @@
+<div class="flex min-h-64 flex-col items-center justify-center rounded-2xl border border-dashed border-forest-200 bg-forest-50/60 px-6 py-10 text-center">
+  <span class="mb-4 flex size-12 items-center justify-center rounded-2xl border border-forest-200/80 bg-paper text-forest-600"><app-icon :name="icon || 'spark'" class="size-6" /></span>
+  <h3 class="font-display text-2xl leading-8 tracking-[-0.025em]">{{ title }}</h3>
+  <p class="mt-2 max-w-sm text-sm leading-6 text-muted">{{ text }}</p>
+  <button v-if="action" type="button" class="btn-secondary mt-5" @click="$emit('action')">{{ action }}<app-icon name="arrow-right" class="size-4" /></button>
+</div>

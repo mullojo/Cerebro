@@ -1,0 +1,16 @@
+<article class="panel flex h-full min-w-0 flex-col p-5 transition-colors hover:border-forest-300 sm:p-6">
+  <div class="mb-4 flex items-center justify-between gap-3">
+    <span class="inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.13em]" :class="kindColor">
+      <app-icon :name="note ? 'book' : item.kind === 'task' ? 'check' : item.kind === 'message' ? 'inbox' : 'diamond'" class="size-3.5" />{{ note ? 'Knowledge' : item.kind === 'message' ? 'Handoff' : item.kind }}
+    </span>
+    <span v-if="!note" class="inline-flex rounded-md px-2 py-1 text-[11px] font-medium ring-1 ring-inset" :class="statusColor">{{ humanStatus(item.status) }}</span>
+    <span v-else class="text-xs text-muted">Shared note</span>
+  </div>
+  <div v-if="note && (item.folder || item.tags?.length)" class="mb-2 flex flex-wrap gap-1.5 text-[10px] leading-5 text-muted"><span v-if="item.folder" class="w-full break-words">{{ item.folder }}</span><span v-for="value in item.tags" :key="value" class="rounded bg-forest-50 px-1.5 text-forest-700">#{{ value }}</span></div>
+  <h3 class="mb-2 text-base leading-6 font-semibold tracking-[-0.02em] break-words"><button type="button" class="min-h-11 cursor-pointer text-left hover:text-forest-600" @click="$emit('read', item)">{{ item.title }}</button></h3>
+  <p class="mb-5 line-clamp-3 text-sm leading-6 whitespace-pre-line text-muted break-words">{{ excerpt || 'Open for the full context and next step.' }}</p>
+  <div class="mt-auto flex flex-wrap items-center justify-between gap-2 border-t border-line/70 pt-3">
+    <span class="inline-flex items-center gap-2 text-xs text-muted"><span v-if="!note" class="inline-flex size-6 items-center justify-center rounded-full bg-forest-100 text-[10px] font-semibold text-forest-800">{{ (item.to || item.author).slice(0, 1).toUpperCase() }}</span>{{ note ? 'A little shared memory' : item.to ? capitalize(item.to) : capitalize(item.author) }}</span>
+    <div class="flex items-center gap-1"><button type="button" class="btn-quiet min-h-11 px-2 text-xs" @click="$emit('read', item)">{{ note ? 'Read note' : 'Details' }}<app-icon name="arrow-up-right" class="size-3.5" /></button><button v-if="canUpdate" type="button" class="btn-quiet min-h-11 px-2 text-xs" @click="$emit('change-status', item)">{{ item.kind === 'message' ? 'Acknowledge' : 'Update' }}</button></div>
+  </div>
+</article>

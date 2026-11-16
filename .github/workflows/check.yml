@@ -1,0 +1,23 @@
+name: Verify public checkout
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: alpha/package-lock.json
+      - run: npm ci
+        working-directory: alpha
+      - run: npm run build
+        working-directory: alpha
+      - run: git diff --exit-code -- alpha/web alpha/projects
+      - run: npm run check:public
+        working-directory: alpha
+      - run: npm test
+        working-directory: alpha
